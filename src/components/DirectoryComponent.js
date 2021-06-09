@@ -7,6 +7,7 @@ import {
    CardBody,
    CardTitle,
 } from "reactstrap";
+import CampsiteInfo from "./CampsiteInfoComponent";
 
 // One component
 class Directory extends Component {
@@ -22,23 +23,6 @@ class Directory extends Component {
    onCampsiteSelect(campsite) {
       //    trigger change of state. Use setState outside of constructor
       this.setState({ selectedCampsite: campsite });
-   }
-
-   renderSelectedCampsite(campsite) {
-      //    if campsite is true
-      if (campsite) {
-         return (
-            //  what renders after card has been clicked
-            <Card>
-               <CardImg top src={campsite.image} alt={campsite.name} />
-               <CardBody>
-                  <CardTitle>{campsite.name}</CardTitle>
-                  <CardText>{campsite.description}</CardText>
-               </CardBody>
-            </Card>
-         );
-      }
-      return <div />;
    }
 
    render() {
@@ -68,13 +52,8 @@ class Directory extends Component {
          <div className="container">
             {/* UI render of map array */}
             <div className="row">{directory}</div>
-            <div className="row">
-               <div className="col-md-5 m-1">
-                  {/* UI render of clicked card */}
-                  {/* based on change of state by use of setState */}
-                  {this.renderSelectedCampsite(this.state.selectedCampsite)}
-               </div>
-            </div>
+            {/* selected card data passed to campsiteinfo comp */}
+            <CampsiteInfo campsite={this.state.selectedCampsite} />
          </div>
       );
    }
