@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-   Card,
-   CardImg,
-   CardImgOverlay,
-   CardText,
-   CardBody,
-   CardTitle,
-} from "reactstrap";
+import { Card, CardImg, CardImgOverlay, CardTitle } from "reactstrap";
 import CampsiteInfo from "./CampsiteInfoComponent";
 
 // One component
@@ -52,7 +45,7 @@ class Directory extends Component {
          <div className="container">
             {/* UI render of map array */}
             <div className="row">{directory}</div>
-            {/* selected card data passed to campsiteinfo comp */}
+            {/* selected card data passed to campsiteinfo comp and rendered to UI */}
             <CampsiteInfo campsite={this.state.selectedCampsite} />
          </div>
       );

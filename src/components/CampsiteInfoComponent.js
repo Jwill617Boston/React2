@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-   Card,
-   CardImg,
-   CardImgOverlay,
-   CardText,
-   CardBody,
-   CardTitle,
-} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 
 class CampsiteInfo extends Component {
    constructor(props) {
@@ -28,11 +21,12 @@ class CampsiteInfo extends Component {
    }
 
    render() {
-      //    if campsites prop is true
+      //    if campsites prop is true then..
       if (this.props.campsite) {
          return (
             <div className="col-md-5 m-1">
                {/* return what card is clicked */}
+               {/* clicked data stored in directory comp state */}
                {this.renderCampsite(this.props.campsite)}
             </div>
          );
