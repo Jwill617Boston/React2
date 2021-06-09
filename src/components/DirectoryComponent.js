@@ -8,16 +8,17 @@ import {
    CardTitle,
 } from "reactstrap";
 
+// One component
 class Directory extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         //   state initial state set to null
+         //   state initial state set to null (falsey value)
          selectedCampsite: null,
       };
    }
 
-   //    campsite object gets passed into the method (function inside of component)
+   //    campsite object gets passed into the method (campsite of card UI)
    onCampsiteSelect(campsite) {
       //    trigger change of state. Use setState outside of constructor
       this.setState({ selectedCampsite: campsite });
@@ -70,6 +71,7 @@ class Directory extends Component {
             <div className="row">
                <div className="col-md-5 m-1">
                   {/* UI render of clicked card */}
+                  {/* based on change of state by use of setState */}
                   {this.renderSelectedCampsite(this.state.selectedCampsite)}
                </div>
             </div>

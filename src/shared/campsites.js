@@ -1,5 +1,6 @@
 // each campground has an array of four comments
 // comments have a id for key
+// four campsites total
 
 export const CAMPSITES = [
    {
