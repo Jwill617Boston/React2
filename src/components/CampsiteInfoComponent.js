@@ -7,6 +7,8 @@ class CampsiteInfo extends Component {
       this.state = {};
    }
 
+   renderComments(comments) {}
+
    renderCampsite(campsite) {
       return (
          //   data returned into card and info is parse
