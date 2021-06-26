@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
+// PROPS Parent = Main direct
 function RenderPartner({ partners }) {
    if (partners) {
       return (
@@ -29,11 +30,13 @@ function RenderPartner({ partners }) {
    return <div />;
 }
 
+// PROPS Parent = Main
 function About(props) {
    // where the data getting passed in
    const partnerslist = props.partners.map((partners) => {
       return (
          <Media tag="li" key={partners.id}>
+            {/* PROPS = partners */}
             <RenderPartner partners={partners} />
          </Media>
       );
@@ -41,6 +44,7 @@ function About(props) {
 
    return (
       <div className="container">
+         {/* ROW 1 */}
          <div className="row">
             <div className="col">
                <Breadcrumb>
@@ -53,6 +57,7 @@ function About(props) {
                <hr />
             </div>
          </div>
+         {/* ROW 2 */}
          <div className="row row-content">
             <div className="col-sm-6">
                <h3>Our Mission</h3>
@@ -105,12 +110,13 @@ function About(props) {
                </Card>
             </div>
          </div>
+         {/* ROW 3 */}
          <div className="row row-content">
             <div className="col-12">
                <h3>Community Partners</h3>
             </div>
             <div className="col mt-4">
-               {/* data pulled is used */}
+               {/* CONST = <About>  */}
                <Media list>{partnerslist}</Media>
             </div>
          </div>
