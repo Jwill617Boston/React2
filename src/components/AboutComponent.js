@@ -14,12 +14,14 @@ function RenderPartner({ partners }) {
    if (partners) {
       return (
          <React.Fragment>
+            {/* Icon */}
             <Media
                object
                width="150"
                src={partners.image}
                alt={partners.name}
             />
+            {/* Text */}
             <Media body className="ml-5 mb-4">
                <Media heading>{partners.name}</Media>
                <Media>{partners.description}</Media>
@@ -36,7 +38,7 @@ function About(props) {
    const partnerslist = props.partners.map((partners) => {
       return (
          <Media tag="li" key={partners.id}>
-            {/* PROPS = partners */}
+            {/* PROPS = partners do something to data from props.map*/}
             <RenderPartner partners={partners} />
          </Media>
       );
@@ -59,6 +61,7 @@ function About(props) {
          </div>
          {/* ROW 2 */}
          <div className="row row-content">
+            {/* Col 1 */}
             <div className="col-sm-6">
                <h3>Our Mission</h3>
                <p>
@@ -72,6 +75,7 @@ function About(props) {
                   visited with each other.
                </p>
             </div>
+            {/* Col 2 */}
             <div className="col-sm-6">
                <Card>
                   <CardHeader className="bg-primary text-white">
@@ -91,6 +95,7 @@ function About(props) {
                   </CardBody>
                </Card>
             </div>
+            {/* Col 3 */}
             <div className="col">
                <Card className="bg-light mt-3">
                   <CardBody>
