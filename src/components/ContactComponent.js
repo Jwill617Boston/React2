@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, Col } from "reactstrap";
+import {
+   Button,
+   Form,
+   FormGroup,
+   Label,
+   Input,
+   Col,
+   Breadcrumb,
+   BreadcrumbItem,
+} from "reactstrap";
+import { Link } from "react-router-dom";
 
 class Contact extends Component {
    constructor(props) {
@@ -39,12 +49,22 @@ class Contact extends Component {
       return (
          <div className="container">
             <div className="row row-content">
+               {/* Col 1 */}
                <div className="col-12">
+                  <Breadcrumb>
+                     <BreadcrumbItem>
+                        <Link to="/home">Home</Link>
+                     </BreadcrumbItem>
+                     <BreadcrumbItem active>Contact</BreadcrumbItem>
+                  </Breadcrumb>
                   <h2>Send us your Feedback</h2>
                   <hr />
                </div>
+               {/* Col 2 */}
                <div className="col-md-10">
+                  {/* Form Submits to handleSubmit alert*/}
                   <Form onSubmit={this.handleSubmit}>
+                     {/* Row 1 First Name */}
                      <FormGroup row>
                         <Label htmlFor="firstName" md={2}>
                            First Name
@@ -60,6 +80,7 @@ class Contact extends Component {
                            />
                         </Col>
                      </FormGroup>
+                     {/* Row 2 Last Name*/}
                      <FormGroup row>
                         <Label htmlFor="lastName" md={2}>
                            Last Name
@@ -75,6 +96,7 @@ class Contact extends Component {
                            />
                         </Col>
                      </FormGroup>
+                     {/* Row 3 Phone Num*/}
                      <FormGroup row>
                         <Label htmlFor="phoneNum" md={2}>
                            Phone
@@ -90,6 +112,7 @@ class Contact extends Component {
                            />
                         </Col>
                      </FormGroup>
+                     {/* Row 4 Email*/}
                      <FormGroup row>
                         <Label htmlFor="email" md={2}>
                            Email
@@ -105,6 +128,7 @@ class Contact extends Component {
                            />
                         </Col>
                      </FormGroup>
+                     {/* Row 5 Contact Check */}
                      <FormGroup row>
                         <Col md={{ size: 4, offset: 2 }}>
                            <FormGroup check>
@@ -131,6 +155,7 @@ class Contact extends Component {
                            </Input>
                         </Col>
                      </FormGroup>
+                     {/* Row 6 Feedback */}
                      <FormGroup row>
                         <Label htmlFor="feedback" md={2}>
                            Your Feedback
@@ -146,6 +171,7 @@ class Contact extends Component {
                            ></Input>
                         </Col>
                      </FormGroup>
+                     {/* Row 7 Button*/}
                      <FormGroup row>
                         <Col md={{ size: 10, offset: 2 }}>
                            <Button type="submit" color="primary">
