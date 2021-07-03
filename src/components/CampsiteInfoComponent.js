@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
    Card,
    CardImg,
@@ -15,32 +15,41 @@ import {
 import { Link } from "react-router-dom";
 import { LocalForm, Control, Errors } from "react-redux-form";
 
+// Validators rules
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 
+// Modal
 class CommentForm extends Component {
    constructor(props) {
       super(props);
+      //   modal state value
       this.state = {
          isModalOpen: false,
       };
+      //   Bind functional comps props
       this.toggleModal = this.toggleModal.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
    }
 
+   //    change of state
    toggleModal() {
       this.setState({
          isModalOpen: !this.state.isModalOpen,
       });
    }
 
+   //    data to string for API
    handleSubmit(values) {
-      console.log("Current state is: " + JSON.stringify(values));
-      alert("Current state is: " + JSON.stringify(values));
+      this.toggleModal();
+      console.log("Current State is: " + JSON.stringify(values));
+      alert("Current State is: " + JSON.stringify(values));
    }
-
+   // //  button to modal form input client
    render() {
       return (
-         <>
+         <div>
+            {/* Modal Button Toggle */}
             <Button outline onClick={this.toggleModal}>
                <i className="fa fa-pencil fa-lg" /> Submit Comment
             </Button>
@@ -50,7 +59,6 @@ class CommentForm extends Component {
                </ModalHeader>
                <ModalBody>
                   <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                     {/* Rating */}
                      <div className="form-group">
                         <Label htmlFor="rating">Rating</Label>
                         <Control.select
@@ -66,19 +74,19 @@ class CommentForm extends Component {
                            <option>5</option>
                         </Control.select>
                      </div>
-                     {/* Name */}
                      <div className="form-group">
                         <Label htmlFor="author">Your Name</Label>
                         <Control.text
                            model=".author"
                            id="author"
                            name="author"
+                           placeholder="Your Name"
                            className="form-control"
                            validators={{
                               minLength: minLength(2),
                               maxLength: maxLength(15),
                            }}
-                        ></Control.text>
+                        />
                         <Errors
                            className="text-danger"
                            model=".author"
@@ -90,27 +98,28 @@ class CommentForm extends Component {
                            }}
                         />
                      </div>
-                     {/* Comment */}
                      <div className="form-group">
                         <Label htmlFor="text">Comment</Label>
                         <Control.textarea
                            model=".text"
                            id="text"
                            name="text"
+                           rows="6"
                            className="form-control"
-                        ></Control.textarea>
+                        />
                      </div>
+                     <Button type="submit" color="primary">
+                        Submit
+                     </Button>
                   </LocalForm>
-                  <Button outline className="fa fa-lg fa-pencil" onClick="">
-                     Submit Comment
-                  </Button>
                </ModalBody>
             </Modal>
-         </>
+         </div>
       );
    }
 }
 
+// campsite mapping cards
 function RenderCampsite({ campsite }) {
    return (
       <div className="col-md-5 m-1">
@@ -124,6 +133,7 @@ function RenderCampsite({ campsite }) {
    );
 }
 
+// comments mapping props=CommentForm
 function RenderComments({ comments }) {
    if (comments) {
       return (
@@ -152,6 +162,7 @@ function RenderComments({ comments }) {
    return <div />;
 }
 
+// render comps view Main=>props
 function CampsiteInfo(props) {
    if (props.campsite) {
       return (
@@ -171,6 +182,7 @@ function CampsiteInfo(props) {
                </div>
             </div>
             <div className="row">
+               {/* Props= campsite, comments */}
                <RenderCampsite campsite={props.campsite} />
                <RenderComments comments={props.comments} />
             </div>
