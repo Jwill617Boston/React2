@@ -35,9 +35,11 @@ function PartnerList(props) {
    }
 
    return (
-      <Media list>
-         <Stagger in>{partners}</Stagger>
-      </Media>
+      <div className="col mt-4">
+         <Media list>
+            <Stagger in>{partners}</Stagger>
+         </Media>
+      </div>
    );
 }
 
